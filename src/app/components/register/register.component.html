@@ -1,0 +1,157 @@
+<app-outer-navbar> </app-outer-navbar>
+
+<div class="text-center pagination-centered" style="padding-top: 80px;">
+  <h1 class="display-3">lanιғy</h1>
+  <p class="lead">A local music streaming server for BIT Mesra</p>
+</div>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+
+                    <!-- form card login -->
+                    <div class="card rounded-0">
+                        <div class="card-header">
+                            <h3 class="mb-0">Register</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="form" role="form" [formGroup]="form" (ngSubmit)="registerUser()">
+
+                              <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input
+                                 type="text"
+                                 class="form-control"
+                                 placeholder="Enter you name"
+                                 formControlName="nameRegister"
+                                >
+                              </div>
+
+                              <div *ngIf="form.get('nameRegister').touched && form.get('nameRegister').invalid" class="alert alert-danger">
+                                  <li *ngIf="form.get('nameRegister').hasError('required')">
+                                    Your name is required
+                                  </li>
+
+                                  <li *ngIf="form.get('nameRegister').hasError('pattern')">
+                                    Doesn't look like a name :P
+                                  </li>
+
+                              </div>
+
+
+                              <div class="form-group">
+                                <label for="userid">User ID:</label>
+                                <input
+                                 type="text"
+                                 class="form-control"
+                                 placeholder="Enter User ID"
+                                 formControlName="useridRegister"
+                                >
+                              </div>
+
+                              <div *ngIf="form.get('useridRegister').touched && form.get('useridRegister').invalid" class="alert alert-danger">
+                                  <li *ngIf="form.get('useridRegister').hasError('required')">
+                                    User ID is required
+                                  </li>
+
+                                  <li *ngIf="form.get('useridRegister').hasError('pattern')">
+                                    User ID can contain only alphanumeric characters and underscore
+                                  </li>
+
+                                  <li *ngIf="form.get('useridRegister').hasError('minlength')">
+                                    User ID should be atleast 3 characters long
+                                  </li>
+                              </div>
+
+
+                              <div class="form-group">
+                                <label for="pwd">Password:</label>
+                                <input
+                                 type="password"
+                                 class="form-control"
+                                 placeholder="Enter Password"
+                                 formControlName="pswdRegister"
+                                >
+                              </div>
+
+                              <div *ngIf="form.get('pswdRegister').touched && form.get('pswdRegister').invalid" class="alert alert-danger">
+                                  <li *ngIf="form.get('pswdRegister').hasError('required')">
+                                    Password is required
+                                  </li>
+
+                                  <li *ngIf="form.get('pswdRegister').hasError('minlength')">
+                                    Password should be atleast 4 characters long
+                                  </li>
+
+                              </div>
+
+
+                              <div class="form-group">
+                                <label for="confirmPwd">Confirm Password:</label>
+                                <input
+                                 type="password"
+                                 class="form-control"
+                                 placeholder="Confirm Password"
+                                 formControlName="confirmPswdRegister"
+                                >
+                              </div>
+
+                              <li *ngIf="form.errors?.matchPasswords" class="alert alert-danger">
+                                Password and Confirm Password don't match
+                              </li>
+
+                              <div *ngIf="form.get('confirmPswdRegister').touched && form.get('confirmPswdRegister').invalid" class="alert alert-danger">
+                                  <li *ngIf="form.get('confirmPswdRegister').hasError('required')">
+                                    Please re-enter your password
+                                  </li>
+
+                              </div>
+
+
+                              <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input
+                                 type="email"
+                                 class="form-control"
+                                 placeholder="Enter your email"
+                                 formControlName="emailRegister"
+                                >
+                              </div>
+
+                              <div *ngIf="form.get('emailRegister').touched && form.get('emailRegister').invalid" class="alert alert-danger">
+                                  <li *ngIf="form.get('emailRegister').hasError('required')">
+                                    Email is required
+                                  </li>
+
+                                  <li *ngIf="form.get('emailRegister').hasError('pattern')">
+                                    Doesn't look like an email
+                                  </li>
+
+
+                              </div>
+
+
+
+
+
+
+                                <button type="submit" class="btn btn-success btn-lg float-left" [disabled]="form.invalid">Register</button>
+                            </form>
+                        </div>
+                        <!--/card-block-->
+                    </div>
+                    <!-- /form card login -->
+                </div>
+
+
+            </div>
+            <!--/row-->
+
+        </div>
+        <!--/col-->
+    </div>
+    <!--/row-->
+</div>
+<!--/container-->

@@ -1,0 +1,86 @@
+<app-outer-navbar> </app-outer-navbar>
+
+<div class="text-center pagination-centered"  style="padding-top: 80px;">
+  <h1 class="display-3">lanιғy</h1>
+  <p class="lead">A local music streaming server for BIT Mesra</p>
+</div>
+
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+
+                    <!-- form card login -->
+                    <div class="card rounded-0">
+                        <div class="card-header">
+                            <h3 class="mb-0">Login</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="form" role="form" #frm="ngForm" (ngSubmit)="login(frm)">
+                              <div class="form-group">
+                                <label for="userid">User ID:</label>
+                                <input
+                                 type="text"
+                                 class="form-control"
+                                 placeholder="Enter User ID"
+                                 name="userid"
+                                 required
+                                 ngModel
+                                 #useridInput = "ngModel"
+                                 minlength="3"
+                                 pattern="[a-zA-Z0-9]+">
+                              </div>
+
+                              <div *ngIf="useridInput.touched && useridInput.errors?.required" class="alert alert-danger">
+                                  UserID is required
+                              </div>
+
+                              <div *ngIf="useridInput.touched && useridInput.errors?.pattern || useridInput.touched && useridInput.errors?.minlength" class="alert alert-danger">
+                                  Doesn't look like a valid userID
+                              </div>
+
+                              <div class="form-group">
+                                <label for="pwd">Password:</label>
+                                <input
+                                type="password"
+                                class="form-control"
+                                placeholder="Enter password"
+                                name="pswd"
+                                required
+                                ngModel
+                                #passwordInput = "ngModel">
+                              </div>
+
+                              <div *ngIf="passwordInput.touched && passwordInput.errors?.required" class="alert alert-danger">
+                                  Password is required
+                              </div>
+
+
+
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                      <input class="form-check-input" type="checkbox" name="remember" ngModel> Remember me
+                                    </label>
+                                  </div>
+
+                                <button type="submit" class="btn btn-success btn-lg float-right" [disabled]="frm.invalid">Login</button>
+                            </form>
+                        </div>
+                        <!--/card-block-->
+                    </div>
+                    <!-- /form card login -->
+
+                </div>
+
+
+            </div>
+            <!--/row-->
+
+        </div>
+        <!--/col-->
+    </div>
+    <!--/row-->
+</div>
+<!--/container-->
